@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMCApp.Web", "Web\FMCApp.Web\FMCApp.Web.csproj", "{FF231670-8A5C-4F47-B54C-2B4780CDC8EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{880957C5-EBCE-4E93-B6E6-0D6090EAE004}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF231670-8A5C-4F47-B54C-2B4780CDC8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF231670-8A5C-4F47-B54C-2B4780CDC8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF231670-8A5C-4F47-B54C-2B4780CDC8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF231670-8A5C-4F47-B54C-2B4780CDC8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FF231670-8A5C-4F47-B54C-2B4780CDC8EF} = {880957C5-EBCE-4E93-B6E6-0D6090EAE004}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5EB32961-22DF-4643-AFA2-878F98FE2F02}
+	EndGlobalSection
+EndGlobal
