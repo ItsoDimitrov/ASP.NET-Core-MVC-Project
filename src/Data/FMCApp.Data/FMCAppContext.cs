@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FMCApp.Web.Areas.Identity.Data;
-using Microsoft.AspNetCore.Identity;
+﻿using FMCApp.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace FMCApp.Web.Models
+namespace FMCApp.Data
 {
     public class FMCAppContext : IdentityDbContext<FMCAppUser>
     {

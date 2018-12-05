@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 
-namespace FMCApp.Web.Areas.Identity.Data
+namespace FMCApp.Data.Models
 {
     // Add profile data for application users by adding properties to the FMCAppUser class
     public class FMCAppUser : IdentityUser
