@@ -40,7 +40,17 @@ namespace FMCApp.Web
                 options.UseSqlServer(
                     this.Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<FMCAppUser>()
+            services.AddDefaultIdentity<FMCAppUser>(
+                    options =>
+                    {
+                        options.Password.RequireDigit = false;
+                        options.Password.RequireNonAlphanumeric = false;
+                        options.Password.RequiredLength = 4;
+                        options.Password.RequireUppercase = false;
+                        options.Password.RequireLowercase = false;
+                        options.Password.RequireNonAlphanumeric = false;
+                    }
+                    )
                 .AddEntityFrameworkStores<FMCAppContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
