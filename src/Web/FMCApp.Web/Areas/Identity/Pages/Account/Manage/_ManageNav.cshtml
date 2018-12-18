@@ -1,5 +1,4 @@
-﻿@using FMCApp.Data.Models
-@inject SignInManager<FMCAppUser> SignInManager
+﻿@inject SignInManager<FMCAppUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
