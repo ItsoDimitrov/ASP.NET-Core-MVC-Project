@@ -11,6 +11,12 @@ namespace FMCApp.Data
         {
         }
 
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Director> Directors { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<News> Newses { get; set; }
+        public DbSet<WatchList> WatchLists { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
