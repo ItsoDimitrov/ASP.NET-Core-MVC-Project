@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using AngleSharp.Parser.Html;
 using FMCApp.Data;
+using FMCApp.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,9 +33,11 @@ namespace Sandbox
         private static void SandboxCode(IServiceProvider serviceProvider)
         {
             
-            //var db = serviceProvider.GetService<FMCAppContext>();
+            var db = serviceProvider.GetService<FMCAppContext>();
             //Console.WriteLine(db.Users.Count());
             // TODO : Code here 
+            
+          
         }
 
 
