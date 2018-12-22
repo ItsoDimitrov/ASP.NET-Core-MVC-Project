@@ -11,7 +11,10 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
-
+.responsive {
+    width: 100%;
+    height: auto;
+}
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FMCApp.Data;
 using FMCApp.Data.Models;
+using FMCApp.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
@@ -41,7 +42,7 @@ namespace FMCApp.Web
                 options.UseSqlServer(
                     this.Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<FMCAppUser>(
+            services.AddIdentity<FMCAppUser,IdentityRole>(
                     options =>
                     {
                         options.Password.RequireDigit = false;
@@ -55,10 +56,12 @@ namespace FMCApp.Web
                 .AddEntityFrameworkStores<FMCAppContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider provider)
         {
             if (env.IsDevelopment())
             {
@@ -71,6 +74,7 @@ namespace FMCApp.Web
                 app.UseHsts();
             }
 
+            RoleSeeder.Seed(provider);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

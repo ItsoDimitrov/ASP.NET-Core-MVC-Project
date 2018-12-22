@@ -120,7 +120,7 @@ namespace FMCApp.Data.Migrations
 
                     b.Property<int>("Genre");
 
-                    b.Property<byte[]>("MoviePoster");
+                    b.Property<string>("MoviePosterUrl");
 
                     b.Property<DateTime?>("ReleaseDate");
 
