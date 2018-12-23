@@ -56,7 +56,10 @@ namespace FMCApp.Web
                 .AddEntityFrameworkStores<FMCAppContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-           
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("Administration", policy => policy.RequireRole("Administrator"));
+            //}); /*// TODO : Let's say, hypothetically, that we have a controller we only want to give our super admin access to. We can apply an authorization policy using the Policy property on the Authorize attribute. To use policy based role checks, we register the policy at startup*/
 
         }
 

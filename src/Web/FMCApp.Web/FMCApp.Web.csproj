@@ -17,4 +17,8 @@
     <ProjectReference Include="..\..\Data\FMCApp.Data\FMCApp.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\ViewModels\VisualizationModels\" />
+  </ItemGroup>
+
 </Project>

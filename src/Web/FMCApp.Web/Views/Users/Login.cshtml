@@ -1,0 +1,33 @@
+﻿@model FMCApp.Web.Models.ViewModels.InputModels.LoginInputModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<title>FMC Login</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<link href="~/css/text.css" rel="stylesheet" />
+<body>
+<div class="signup-form">
+    <form asp-controller="Users" asp-action="Login"method="post">
+		<h2>Login</h2>
+        <div class="form-group">
+            <label asp-for="Username" class="text-center"></label>
+            <input asp-for="Username" class="form-control" placeholder="Username"/>
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+		<div class="form-group">
+		    <label asp-for="Password" class="text-center"></label>
+		    <input asp-for="Password" class="form-control" placeholder="Password" />
+		    <span asp-validation-for="Password" class="text-danger"></span>        
+		    </div>      
+		<div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Login Now</button>
+        </div>
+    </form>
+	<div class="text-center">Don't have an account yet? <a asp-controller="Users" asp-action="Register">Sign up</a></div>
+</div>
+</body>
