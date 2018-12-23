@@ -77,21 +77,16 @@ namespace FMCApp.Web.Controllers
                         return this.RedirectToAction("Index", "Home");
                     }
                 }
-                else
-                {
-                    foreach (var modelState in ViewData.ModelState.Values)
-                    {
-                        foreach (var error in modelState.Errors)
-                        {
-                            Console.WriteLine(error);
-                        }
-                    }
-                }
-             
-
+             // TODO : Compare input password with password in database . If any error print message - "Incorrect password or username."
             }
             
             return this.View();
+        }
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return this.Redirect("/");
         }
     }
 }
