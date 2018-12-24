@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
+using AngleSharp;
 using AngleSharp.Parser.Html;
 using FMCApp.Data;
 using FMCApp.Data.Models;
@@ -36,8 +37,17 @@ namespace Sandbox
             var db = serviceProvider.GetService<FMCAppContext>();
             //Console.WriteLine(db.Users.Count());
             // TODO : Code here 
-            
-          
+            //var config = Configuration.Default.WithDefaultLoader();
+            //var context = BrowsingContext.New(config);
+            //for (int i = 4400; i <= 4469; i++)
+            //{
+            //    var url = "https://www.boxofficemojo.com/news/?id=" + i;
+            //    var document = context.OpenAsync(url).GetAwaiter().GetResult();
+            //    var newsTitle = document.QuerySelector(".h1").TextContent; 
+            //    var newsContent = document.QuerySelector()
+            //}
+
+
         }
 
 
