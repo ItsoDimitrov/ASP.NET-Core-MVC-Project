@@ -19,15 +19,18 @@ namespace FMCApp.Web.Controllers
 
         public IActionResult Details(int? id)
         {
-            if (id == null)
+            var news = this._context.Newses.Find(id);
+            if (news == null)
             {
                 return NotFound();
             }
+            
             var newsModel = this._context.Newses.Select(n => new NewsDetails
             {
                  Id = n.Id,
                  Content = n.Content,
-                Title = n.Title
+                Title = n.Title,
+                ImageUrl = n.ImageUrl
             }).FirstOrDefault(n => n.Id == id);
             return View("Details",newsModel);
         }

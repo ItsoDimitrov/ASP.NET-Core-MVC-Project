@@ -11,6 +11,7 @@ namespace FMCApp.Web.Models.ViewModels.VisualizationModels.News
         public string Title { get; set; }
         public string Content { get; set; }
         public string HtmlContent => this.Content.Replace("\n", "<br />\n");
+        public string ImageUrl { get; set; }
 
     }
 }
