@@ -113,7 +113,7 @@
                             <p>@(news.HtmlContent.Substring(0, 100) + "...")</p>
                         }
                     </div>
-                    <a href="#" class="tm-welcome-link tm-button">Read more...</a>
+                    <a asp-controller="News" asp-action="Details" asp-route-id="@news.Id" class="tm-welcome-link tm-button">Read more...</a>
                 </div>
             }
 
