@@ -137,7 +137,7 @@
                     <figcaption>
                         <h2>@movie.Title<span></span></h2>
                         <p>Fusce faucibus metus in augue</p>
-                        <a href="img/img-11-08.jpg">View more</a>
+                        <a asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id"> View more</a>
                     </figcaption>
                 </figure>
             }
