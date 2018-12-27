@@ -88,6 +88,9 @@
     <link href="~/css/templatemo-style.css" rel="stylesheet" />
     <link href="~/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body style="background-color:#d4d4d4">
@@ -110,18 +113,21 @@
                             </li>
 
                             <li class="tm-nav-item">
-                                <a class="tm-nav-item-link tm-button" asp-controller="Users" asp-action="Register"><i class="fa fa-image tm-nav-fa"></i>Register</a>
+                                <a class="tm-nav-item-link tm-button" asp-controller="Users" asp-action="Register">Register</a>
                             </li>
                         }
                         else
                         {
                             <li class="tm-nav-item">
-                                <a class="tm-nav-item-link tm-button" asp-controller="Users" asp-action="Logout"><i class="fa fa-image tm-nav-fa"></i>Logout</a>
+                                <a class="tm-nav-item-link tm-button" asp-controller="Users" asp-action="Logout">Logout</a>
                             </li>
                         }
                         <li class="tm-nav-item">
+                            <a class="tm-nav-item-link tm-button" asp-controller="News" asp-action="AllNews">Movie News</a>
+                        </li>
+                        <li class="tm-nav-item">
                             <a href="#welcome" class="tm-nav-item-link tm-button">
-                                <i class="fa fa-smile-o tm-nav-fa"></i>Welcome
+                                Welcome
                             </a>
                         </li>
                         <li class="tm-nav-item">
@@ -130,19 +136,10 @@
                             </a>
                         </li>
                         <li class="tm-nav-item">
-                            <a href="#services" class="tm-nav-item-link tm-button">
-                                <i class="fa fa-tasks tm-nav-fa"></i>Our Services
-                            </a>
-                        </li>
-                        <li class="tm-nav-item">
-                            <a href="#about" class="tm-nav-item-link tm-button">
-                                <i class="fa fa-sitemap tm-nav-fa"></i>About Company
-                            </a>
-                        </li>
-                        <li class="tm-nav-item">
                             <a href="#contact" class="tm-nav-item-link tm-button">
-                                <i class="fa fa-envelope-o tm-nav-fa"></i>Contact Us
+                                Contact Us
                             </a>
+
                         </li>
 
                     </ul>

@@ -1,0 +1,38 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "AllNews";
+}
+@model IEnumerable<FMCApp.Web.Models.ViewModels.VisualizationModels.News.NewsViewModel>
+<div class="container">
+    <div class="row">
+        @foreach (var news in @Model)
+        {
+
+            <div class="card col-md-12 p-3">
+                <div class="row ">
+                    <div class="col-md-4">
+                        <img class="w-100" src="@news.ImageUrl">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-block">
+                            @if (news.Title.Length > 40)
+                            {
+                                <h2  class="tm-section-title">@(news.Title.Substring(0, 40) + "...")</h2>
+                            }
+                            @if (news.Content.Length > 100)
+                            {
+                                <p>@(news.Content.Substring(0, 100) + "...")</p>
+                            }
+                            <a asp-controller="News" asp-action="Details" asp-route-id="@news.Id" class="tm-welcome-link tm-button">Read more...</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+        }
+        @Html.PagedListPager((IPagedList)Model, pageNumber => Url.Action("AllNews", new { pageNumber }))
+    </div>
+</div>
