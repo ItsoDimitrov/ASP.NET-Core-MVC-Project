@@ -89,11 +89,12 @@
     <link href="~/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+    @*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
 </head>
 
 <body style="background-color:#d4d4d4">
@@ -124,6 +125,9 @@
                             <li class="tm-nav-item">
                                 <a class="tm-nav-item-link tm-button" asp-controller="Users" asp-action="Logout">Logout</a>
                             </li>
+                            <li class="tm-nav-item">
+                                <a class="tm-nav-item-link tm-button" asp-controller="Chats" asp-action="OpenChat">Open Chat</a>
+                            </li>
                         }
                         <li class="tm-nav-item">
                             <a class="tm-nav-item-link tm-button" asp-controller="News" asp-action="AllNews">Movie News</a>
@@ -152,9 +156,19 @@
         </div>
     </div>
     <hr />
-    <footer>
-        <p>&copy; 2018 - FMCApp.Web</p>
-    </footer>
+<footer>
+    <p>&copy; 2018 - FMCApp.Web</p>
+</footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/@@aspnet/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/site.js" asp asp-append-version="true"></script>
+    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
     @RenderSection("Scripts", required: false)
 </body>
 </html>

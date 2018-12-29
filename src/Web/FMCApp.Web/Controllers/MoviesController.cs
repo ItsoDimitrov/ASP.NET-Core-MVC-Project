@@ -33,10 +33,11 @@ namespace FMCApp.Web.Controllers
                 Description = m.Description,
                 Genre = m.Genre.ToString(),
                 ReleaseDate = m.ReleaseDate,
-                MoviePosterUrl = m.MoviePosterUrl
-                
+                MoviePosterUrl = m.MoviePosterUrl,
+
+
             }).FirstOrDefault(m => m.Id == id);
-            return View("Details",movie);
+            return View("Details",movie); // TODO : Implement view correctly ! ! ! !
         }
     }
 }

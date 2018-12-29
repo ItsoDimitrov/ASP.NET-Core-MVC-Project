@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FMCApp.Data;
 using FMCApp.Data.Models;
+using FMCApp.Web.Hubs;
 using FMCApp.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -54,7 +55,7 @@ namespace FMCApp.Web
                     }
                     )
                 .AddEntityFrameworkStores<FMCAppContext>();
-
+            services.AddSignalR();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             //services.AddAuthorization(options =>
             //{
@@ -83,7 +84,12 @@ namespace FMCApp.Web
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
+            app.UseSignalR(
+                routes =>   
+                {
+                    routes.MapHub<ChatHub>("/OpenChat");
+                }
+                );
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
