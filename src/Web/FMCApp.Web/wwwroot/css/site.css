@@ -4,7 +4,13 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
-
+.scrollabletextbox {
+    height: 100px;
+    width: 200px;
+    font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 82%;
+    overflow: scroll;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
