@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "OpenChat";
 }
 
@@ -26,16 +25,17 @@
             new signalR.HubConnectionBuilder()
                 .withUrl("/OpenChat")
                 .build();
+      
         connection.on("NewMessage",
-            function (message) {
-                var chatInfo = `<div>[${message.user}] ${message.text}</div>`;
+            function(message) {
+                var chatInfo = `<div>${message.user}: ${message.text}</div>`;
                 $("#messagesList").append(chatInfo);
             });
-        $("#sendButton").click(function () {
+        $("#sendButton").click(function() {
             var message = $("#messageInput").val();
             connection.invoke("Send", message);
         });
-        connection.start().catch(function (err) {   
+        connection.start().catch(function(err) {
             return console.error(err.toString());
         });
     </script>

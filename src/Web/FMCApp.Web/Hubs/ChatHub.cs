@@ -11,11 +11,16 @@ namespace FMCApp.Web.Hubs
     {
         public async Task Send(string message)
         {
-            await this.Clients.All.SendAsync("NewMessage", new Message
+            if (!string.IsNullOrWhiteSpace(message))
             {
-                User = this.Context.User.Identity.Name,
-                Text = message,
-            });
+                await this.Clients.All.SendAsync("NewMessage", new Message
+                {
+
+                    User = this.Context.User.Identity.Name,
+                    Text = message,
+                });
+
+            }
         }
     }
 }
