@@ -24,6 +24,7 @@
                         </span>
                         <span>/per kg</span>
                     </p>*@ 
+                        <hr style="background-color: black">
                     <dl class="item-property">
                         <dt>Genre:</dt>
                         <dd>
@@ -39,16 +40,16 @@
                         </dd>
                     </dl>
                     <dl class="param param-feature">
+                        <dt>Release Date:</dt>
+                        <dd>@Model.ReleaseDate.Value.ToShortDateString() @Model.ReleaseDate.Value.Year</dd>
+                    </dl>
+                    <dl class="param param-feature">
                         <dt>Director:</dt>
                         <dd> <a asp asp-controller="Directors" asp-action="Details">@Model.Director</a></dd> 
                     </dl>  <!-- item-property-hor .// -->
-                    <dl class="param param-feature">
-                        <dt>Release Date:</dt>
-                        <dd>@Model.ReleaseDate.Value.ToShortDateString() @Model.ReleaseDate.Value.Year</dd>
-                    </dl> 
-                    <hr>
-                    <a href="#" class="btn btn-lg btn-success text-uppercase">+ Add to Watchlist</a>
-                    <a href="#" class="btn btn-lg btn-info text-uppercase">Comments</a>
+                    <hr style="background-color: black">
+                    @*<a asp-controller="Users" asp-action="Watchlist" as class="btn btn-lg btn-success text-uppercase">+ Add to Watchlist</a>*@
+                    <a href="#" class="btn btn-lg btn-info text-uppercase">User Reviews</a>
                 </article> <!-- card-body.// -->
             </aside> <!-- col.// -->
         </div> <!-- row.// -->

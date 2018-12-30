@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FMCApp.Data;
+using FMCApp.Data.Models;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.Movies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using X.PagedList;
 
@@ -12,7 +14,6 @@ namespace FMCApp.Web.Controllers
     public class MoviesController : Controller
     {
         private readonly FMCAppContext _context;
-
         public MoviesController(FMCAppContext context)
         {
             _context = context;
@@ -20,6 +21,8 @@ namespace FMCApp.Web.Controllers
 
         public IActionResult AllMovies(int? pageNumber)
         {
+
+            
             var movie = this._context.Movies.Select(m => new MoviesViewModel
             {
                 Id = m.Id,
