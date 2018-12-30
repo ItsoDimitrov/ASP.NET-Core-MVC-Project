@@ -1,4 +1,5 @@
 ﻿@using X.PagedList
+@using X.PagedList.Mvc.Common
 @using X.PagedList.Mvc.Core
 @{
     ViewData["Title"] = "AllNews";
@@ -18,7 +19,7 @@
                         <div class="card-block">
                             @if (news.Title.Length > 40)
                             {
-                                <h2  class="tm-section-title">@(news.Title.Substring(0, 40) + "...")</h2>
+                                <h2 class="tm-section-title">@(news.Title.Substring(0, 40) + "...")</h2>
                             }
                             @if (news.Content.Length > 100)
                             {
@@ -31,8 +32,16 @@
                 </div>
             </div>
 
-           
+
         }
-        @Html.PagedListPager((IPagedList)Model, pageNumber => Url.Action("AllNews", new { pageNumber }))
+        @Html.PagedListPager((IPagedList)Model, pageNumber => Url.Action("AllNews", new { pageNumber }),new PagedListRenderOptions
+        {
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" },
+            DisplayLinkToFirstPage = 0,
+            DisplayLinkToLastPage = 0,
+
+
+        })
     </div>
 </div>

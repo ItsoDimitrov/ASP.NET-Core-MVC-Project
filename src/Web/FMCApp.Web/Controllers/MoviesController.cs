@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FMCApp.Data;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.Movies;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace FMCApp.Web.Controllers
 {
@@ -15,6 +16,24 @@ namespace FMCApp.Web.Controllers
         public MoviesController(FMCAppContext context)
         {
             _context = context;
+        }
+
+        public IActionResult AllMovies(int? pageNumber)
+        {
+            var movie = this._context.Movies.Select(m => new MoviesViewModel
+            {
+                Id = m.Id,
+                Title = m.Title,
+                MoviePosterUrl = m.MoviePosterUrl
+            });
+            var moviesModel = new AllMoviesViewModel
+            {
+                 Movies = movie
+            };
+            var nextPage = pageNumber ?? 1;
+            var pagedViewModel = moviesModel.Movies.ToPagedList(nextPage, 6);
+            return this.View(pagedViewModel);
+            //  return this.View(moviesModel);
         }
 
         public IActionResult Details(int? id)
