@@ -25,6 +25,8 @@ namespace FMCApp.Web.Controllers
         }
         public IActionResult Index()
         {
+          
+
             var news = this._context.Newses.Take(2)
                 .Select(n => new IndexNewsViewModel
             {

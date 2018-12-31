@@ -14,15 +14,15 @@ namespace FMCApp.Web.Controllers
     public class MoviesController : Controller
     {
         private readonly FMCAppContext _context;
+
         public MoviesController(FMCAppContext context)
         {
             _context = context;
         }
 
-        public IActionResult AllMovies(int? pageNumber)
+        public async Task<IActionResult> AllMovies(int? pageNumber, string searchString)
         {
 
-            
             var movie = this._context.Movies.Select(m => new MoviesViewModel
             {
                 Id = m.Id,
@@ -35,8 +35,18 @@ namespace FMCApp.Web.Controllers
             };
             var nextPage = pageNumber ?? 1;
             var pagedViewModel = moviesModel.Movies.ToPagedList(nextPage, 6);
+
+           
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movie = movie.Where(s => s.Title.Contains(searchString));
+                return View("SearchMovie",await movie.ToListAsync());
+            }
+
             return this.View(pagedViewModel);
             //  return this.View(moviesModel);
+
         }
 
         public IActionResult Details(int? id)

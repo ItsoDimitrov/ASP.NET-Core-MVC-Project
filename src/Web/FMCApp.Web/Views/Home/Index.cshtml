@@ -98,7 +98,7 @@
 @model FMCApp.Web.Models.ViewModels.VisualizationModels.Shared.IndexNewsMoviesViewModel
 <div class="tm-main-content">
     <div class="tm-content-box tm-content-box-home">
-        <img src="~/images/testImage.jpg" alt="Nature" class="responsive" />
+        <img src="~/images/testImage.jpg" alt="Nature" class="responsive"/>
         <div class="tm-welcome-boxes-container">
             @foreach (var news in Model.Newses)
             {
@@ -106,7 +106,7 @@
                     <div class="tm-welcome-text">
                         @if (news.Title.Length > 40)
                         {
-                            <h2  class="tm-section-title">@(news.Title.Substring(0, 40) + "...")</h2>
+                            <h2 class="tm-section-title">@(news.Title.Substring(0, 40) + "...")</h2>
                         }
                         @if (news.HtmlContent.Length > 100)
                         {
@@ -133,9 +133,9 @@
             {
 
                 <figure class="effect-bubba">
-                    <img src="@movie.MoviePosterUrl" alt="Image 8" class="img-fluid" />
+                    <img src="@movie.MoviePosterUrl" alt="Image 8" class="img-fluid"/>
                     <figcaption>
-                        <h2>@movie.Title<span></span></h2>
+                        <h2><span>@movie.Title</span></h2>
                         <a asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id"> View more</a>
                     </figcaption>
                 </figure>

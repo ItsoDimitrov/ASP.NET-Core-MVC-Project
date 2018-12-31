@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "SearchMovie";
+}
+
+<h2>SearchMovie</h2>
+
+@using X.PagedList
+@using X.PagedList.Mvc.Common
+@using X.PagedList.Mvc.Core
+@model IEnumerable<FMCApp.Web.Models.ViewModels.VisualizationModels.Movies.MoviesViewModel>
+<div id="gallery" class="tm-content-box">
+    <div class="grid tm-gallery">
+        @foreach (var movie in @Model)
+        {
+            <figure class="effect-bubba">
+                <img src="@movie.MoviePosterUrl" alt="Image 8" class="img-fluid" />
+                <figcaption>
+                    <h4><span>@movie.Title</span></h4>
+                    <a asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id"></a>
+                </figcaption>
+            </figure>
+        }
+    </div>
+</div>
