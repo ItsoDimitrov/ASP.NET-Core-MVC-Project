@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FMCApp.Data;
 using FMCApp.Data.Models;
 using FMCApp.Web.Models.ViewModels.InputModels;
 using Microsoft.AspNetCore.Authorization;
@@ -15,11 +16,13 @@ namespace FMCApp.Web.Controllers
     {
         private readonly UserManager<FMCAppUser> _userManager;
         private readonly SignInManager<FMCAppUser> _signInManager;
+        private readonly FMCAppContext _context;
 
-        public UsersController(UserManager<FMCAppUser> userManager, SignInManager<FMCAppUser> signInManager)
+        public UsersController(UserManager<FMCAppUser> userManager, SignInManager<FMCAppUser> signInManager, FMCAppContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
         }
 
         [HttpGet]
@@ -36,7 +39,7 @@ namespace FMCApp.Web.Controllers
             return this.View();
         }
 
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public  async Task<IActionResult> Register(RegisterInputModel model)
         {
@@ -61,6 +64,7 @@ namespace FMCApp.Web.Controllers
             }
             return View();
         }
+        [ValidateAntiForgeryToken]
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginInputModel model)
@@ -82,6 +86,18 @@ namespace FMCApp.Web.Controllers
             
             return this.View();
         }
+
+        //public IActionResult Watchlist(int id)
+        //{
+        //    var movie = this._context.Movies.FirstOrDefault(m => m.Id == id);
+        //    if (movie == null)
+        //    {
+        //        return this.NotFound();
+        //    }
+        //    return this.View();
+        //}
+
+
         [Authorize]
         public async Task<IActionResult> Logout()
         {

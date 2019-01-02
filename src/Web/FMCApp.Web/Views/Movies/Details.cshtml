@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Details";
 }
+
 @model FMCApp.Web.Models.ViewModels.VisualizationModels.Movies.MovieDetailsViewModel
 <!------ Include the above in your HEAD tag ---------->
     <div class="card">
@@ -19,12 +20,12 @@
                 <article class="card-body p-5">
                     <h3 class="title mb-3">@Model.Title</h3>
                     @*<p class="price-detail-wrap">
-                        <span class="price h3 text-warning">
-                            <span class="currency">US $</span><span class="num">1299</span>
-                        </span>
-                        <span>/per kg</span>
-                    </p>*@ 
-                        <hr style="background-color: black">
+            <span class="price h3 text-warning">
+                <span class="currency">US $</span><span class="num">1299</span>
+            </span>
+            <span>/per kg</span>
+        </p>*@
+                    <hr style="background-color: black">
                     <dl class="item-property">
                         <dt>Genre:</dt>
                         <dd>
@@ -45,13 +46,31 @@
                     </dl>
                     <dl class="param param-feature">
                         <dt>Director:</dt>
-                        <dd> <a asp asp-controller="Directors" asp-action="Details">@Model.Director</a></dd> 
+                        <dd> <a asp asp-controller="Directors" asp-action="Details">@Model.Director</a></dd>
                     </dl>  <!-- item-property-hor .// -->
-                    <hr style="background-color: black">
-                    @*<a asp-controller="Users" asp-action="Watchlist" as class="btn btn-lg btn-success text-uppercase">+ Add to Watchlist</a>*@
+                    <hr />
+                    @if (!string.IsNullOrEmpty(ViewBag.message))
+                    {
+                        <button type="button" class="btn btn-lg btn-success text-uppercase" disabled>@ViewBag.message</button>
+                    }
+                    <a asp-controller="Movies" asp-action="AddToWatchlist" asp-route-id="@Model.Id" id="addToWatchlist" class="btn btn-lg btn-success text-uppercase">+ Add to Watchlist</a>
+                    @*<a asp-controller="#" asp-action="#" asp-route-id="#" id="removeFromWatchlist" style="display: none" class="btn btn-lg btn-success text-uppercase">Log in to </a>*@
                     <a href="#" class="btn btn-lg btn-info text-uppercase">User Reviews</a>
                 </article> <!-- card-body.// -->
             </aside> <!-- col.// -->
         </div> <!-- row.// -->
     </div> <!-- card.// -->
 <!--container.//-->
+@*@section Scripts
+{
+    <script>
+        document.getElementById('addToWatchlist').onclick = function() {
+            document.getElementById('removeFromWatchlist').style.display = "block";
+            document.getElementById('addToWatchlist').style.display = "none";
+        }
+        document.getElementById('removeFromWatchlist').onclick = function() {
+        }
+        document.getElementById('removeFromWatchlist').style.display = "none";
+        document.getElementById('addToWatchlist').style.display = "block";
+    </script>
+}*@
