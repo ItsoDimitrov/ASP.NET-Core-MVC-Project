@@ -8,6 +8,8 @@ using AngleSharp;
 using AngleSharp.Parser.Html;
 using FMCApp.Data;
 using FMCApp.Data.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +37,7 @@ namespace Sandbox
         {
             
             var db = serviceProvider.GetService<FMCAppContext>();
+            var userManager = serviceProvider.GetService<UserManager<FMCAppUser>>();
             //Console.WriteLine(db.Users.Count());
             // TODO : Code here 
             //var config = Configuration.Default.WithDefaultLoader();
@@ -46,8 +49,7 @@ namespace Sandbox
             //    var newsTitle = document.QuerySelector(".h1").TextContent; 
             //    var newsContent = document.QuerySelector()
             //}
-
-
+           
         }
 
 

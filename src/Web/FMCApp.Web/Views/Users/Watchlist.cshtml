@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "Watchlist";
+
+
+    int totalMovies = Model.userWatchlist.Count();
+
+}
+@model FMCApp.Web.Models.ViewModels.VisualizationModels.Watchlist.AllUserWatchlistViewModel
+
+<div class="tm-welcome-link tm-button">Movies in your list: @totalMovies</div>
+<hr />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+@*<div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <td>
+                            @foreach (var movie in @Model.userWatchlist)
+                            {
+                                <div class="media">
+                                    <a href="#" class="pull-left">
+                                        <img src="@movie.MoviePosterUrl"width="128" height="128" class="media-photo">
+                                    </a>
+                                    <div class="media-body">
+                                        <span class="media-meta pull-right">Febrero 13, 2016</span>
+                                        <h4 class="title">
+                                            Lorem Impsum
+                                            <span class="pull-right pendiente">(Pendiente)</span>
+                                        </h4>
+                                        <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                    </div>
+                                </div>
+                            }
+
+                        </td>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+<div style="overflow-y: auto; height:520px;">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="table-active">
+                    <table class="table table-responsive">
+                        @foreach (var movie in @Model.userWatchlist)
+                        {
+                            <tbody>
+                            <div class="media">
+                                <a href="#" class="pull-left">
+                                    <img src="@movie.MoviePosterUrl" width="128" height="128" class="media-photo">
+                                </a>
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">Febrero 13, 2016</span>
+                                    <h4 class="title">
+                                        Lorem Impsum
+                                        <span class="pull-right pendiente">(Pendiente)</span>
+                                    </h4>
+                                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                </div>
+                            </div>
+                            </tbody>
+                        }
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

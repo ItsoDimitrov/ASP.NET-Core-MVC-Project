@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FMCApp.Data;
 using FMCApp.Data.Models;
 using FMCApp.Web.Models.ViewModels.InputModels;
+using FMCApp.Web.Models.ViewModels.VisualizationModels.Watchlist;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -86,16 +87,24 @@ namespace FMCApp.Web.Controllers
             
             return this.View();
         }
-
-        //public IActionResult Watchlist(int id)
-        //{
-        //    var movie = this._context.Movies.FirstOrDefault(m => m.Id == id);
-        //    if (movie == null)
-        //    {
-        //        return this.NotFound();
-        //    }
-        //    return this.View();
-        //}
+        [Authorize]
+        public IActionResult Watchlist(int id)
+        {
+            // Get the current logged in user 
+            var currentUser = _userManager.GetUserId(HttpContext.User);
+            var userMovies = this._context.WatchLists.Where(u => u.UserId == currentUser).Select(m => new UserWatchlistViewModel
+            {
+                Id =  m.Id,
+                MoviePosterUrl = m.Movie.MoviePosterUrl,
+                AddedOn = DateTime.UtcNow,
+                MovieTitle = m.Movie.Title,
+            });
+            var model = new AllUserWatchlistViewModel
+            {
+                userWatchlist = userMovies
+            };
+            return this.View(model);
+        }
 
 
         [Authorize]
