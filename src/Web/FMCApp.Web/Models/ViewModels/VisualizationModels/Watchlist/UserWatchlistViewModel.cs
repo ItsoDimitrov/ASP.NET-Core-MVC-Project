@@ -11,6 +11,8 @@ namespace FMCApp.Web.Models.ViewModels.VisualizationModels.Watchlist
         public DateTime AddedOn { get; set; }
         public string MoviePosterUrl { get; set; }
         public string MovieTitle { get; set; }
+        public string Genre { get; set; }
+        public string Description { get; set; }
         
 
     }

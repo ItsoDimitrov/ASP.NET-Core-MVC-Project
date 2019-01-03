@@ -7,44 +7,12 @@
 
 }
 @model FMCApp.Web.Models.ViewModels.VisualizationModels.Watchlist.AllUserWatchlistViewModel
-
+@using Humanizer
 <div class="tm-welcome-link tm-button">Movies in your list: @totalMovies</div>
 <hr />
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+@*<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>*@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-@*<div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <td>
-                            @foreach (var movie in @Model.userWatchlist)
-                            {
-                                <div class="media">
-                                    <a href="#" class="pull-left">
-                                        <img src="@movie.MoviePosterUrl"width="128" height="128" class="media-photo">
-                                    </a>
-                                    <div class="media-body">
-                                        <span class="media-meta pull-right">Febrero 13, 2016</span>
-                                        <h4 class="title">
-                                            Lorem Impsum
-                                            <span class="pull-right pendiente">(Pendiente)</span>
-                                        </h4>
-                                        <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                                    </div>
-                                </div>
-                            }
-
-                        </td>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
-
-
 
 <div style="overflow-y: auto; height:520px;">
     <div class="row">
@@ -60,12 +28,18 @@
                                     <img src="@movie.MoviePosterUrl" width="128" height="128" class="media-photo">
                                 </a>
                                 <div class="media-body">
-                                    <span class="media-meta pull-right">Febrero 13, 2016</span>
-                                    <h4 class="title">
-                                        Lorem Impsum
-                                        <span class="pull-right pendiente">(Pendiente)</span>
+                                    <span class="pull-right">Added: @movie.AddedOn.Humanize()</span>
+                                    <h4>
+                                        @movie.MovieTitle
                                     </h4>
-                                    <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                    <div class="pull-right">(@movie.Genre)</div>
+                                    @if (movie.Description.Length > 100)
+                                    {
+                                        <p>@(movie.Description.Substring(0,100) + "...")</p>
+                                    }
+                                    <div>
+                                        <a asp-controller="#" asp-action="#" asp-route-id="#"class="btn btn-danger text-uppercase">Remove</a>
+                                    </div>
                                 </div>
                             </div>
                             </tbody>

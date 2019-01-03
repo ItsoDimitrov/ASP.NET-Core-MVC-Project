@@ -98,6 +98,8 @@ namespace FMCApp.Web.Controllers
                 MoviePosterUrl = m.Movie.MoviePosterUrl,
                 AddedOn = DateTime.UtcNow,
                 MovieTitle = m.Movie.Title,
+                Genre = m.Movie.Genre.ToString(),
+                Description = m.Movie.Description
             });
             var model = new AllUserWatchlistViewModel
             {
