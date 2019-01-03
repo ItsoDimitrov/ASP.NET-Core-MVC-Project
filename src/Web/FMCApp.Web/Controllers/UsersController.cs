@@ -108,6 +108,21 @@ namespace FMCApp.Web.Controllers
             return this.View(model);
         }
 
+        [Authorize]
+        [HttpPost]
+        public IActionResult RemoveFromWatchlist(int id)
+        {
+            var currentUser = _userManager.GetUserId(HttpContext.User);
+            var movieToDelete = this._context.WatchLists.FirstOrDefault(m => m.Id == id && m.UserId == currentUser);
+            if (movieToDelete == null)
+            {
+                return this.NotFound();
+            }
+
+            this._context.Remove(movieToDelete);
+            this._context.SaveChanges();
+            return this.RedirectToAction("Watchlist","Users");
+        }
 
         [Authorize]
         public async Task<IActionResult> Logout()
