@@ -38,7 +38,9 @@
                                         <p>@(movie.Description.Substring(0,100) + "...")</p>
                                     }
                                     <div>
-                                        <a asp-controller="#" asp-action="#" asp-route-id="#"class="btn btn-danger text-uppercase">Remove</a>
+                                        <form asp-controller="Users" asp-action="RemoveFromWatchlist" asp-route-id="@movie.Id" method="post">
+                                            <button type="submit" class="btn btn-danger text-uppercase">Remove</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
