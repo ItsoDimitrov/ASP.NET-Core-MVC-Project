@@ -16,7 +16,9 @@ namespace FMCApp.Data.Models
         public int MovieId { get; set; }
         [ForeignKey("MovieId")]
         public Movie Movie { get; set; }
+        public DateTime? AddedOn { get; set; }
         public string Content { get; set; }
+
 
    
 

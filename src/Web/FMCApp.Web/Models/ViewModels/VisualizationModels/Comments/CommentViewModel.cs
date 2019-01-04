@@ -10,7 +10,7 @@ namespace FMCApp.Web.Models.ViewModels.VisualizationModels.Comments
         public int Id { get; set; }
         public string Username { get; set; }
         public string Content { get; set; }
-        public DateTime? AddedOn { get; set; }
+        public DateTime AddedOn { get; set; }
 
 
     }

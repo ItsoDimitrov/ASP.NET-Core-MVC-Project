@@ -68,7 +68,9 @@ namespace FMCApp.Web.Controllers
             {
                 UserId = currentLoggedInUserId,
                 Content = model.Comment.Content,
-                MovieId = movieId
+                MovieId = movieId,
+                AddedOn = DateTime.Now
+                    
 
             };
             this._context.Comments.Add(comment);

@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "UserReviews";
 }
+@using Humanizer
 @model FMCApp.Web.Models.ViewModels.VisualizationModels.Comments.AllCommentsViewModel
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <h2>User Reviews for <strong>@ViewBag.MovieTitle</strong></h2>
@@ -12,22 +13,44 @@
             <h2>Comments @Model.Comments.Count() <div class="pull-right"><a href="#" id="addacomment" class="btn btn-primary">Add a coment</a> </div></h2>
         </div>
         <div class="row" id="addcomment" style="display: none;">
-                <form asp-action="AddComments" asp-controller="UserReviews" asp-route-movieId="@ViewBag.MovieId" method="post">
-                    @*<textarea class="form-control" placeholder="Comment content..."></textarea><br/>*@
-                    <label asp-for="@Model.Comment.Content" class="text-center"></label>
-                    <input asp-for="@Model.Comment.Content" class="form-control" placeholder="Comment content..."/>
-                    <span asp-validation-for="@Model.Comment.Content" class="text-danger"></span>
-                    <button class="btn btn-primary">Send</button>
+            <form asp-action="AddComments" asp-controller="UserReviews" asp-route-movieId="@ViewBag.MovieId" method="post">
+                @*<textarea class="form-control" placeholder="Comment content..."></textarea><br/>*@
+                <label asp-for="@Model.Comment.Content" class="text-center"></label>
+                <input asp-for="@Model.Comment.Content" class="form-control" placeholder="Comment content..." />
+                <span asp-validation-for="@Model.Comment.Content" class="text-danger"></span>
+                <button class="btn btn-primary">Send</button>
 
-                </form>
+            </form>
+        </div>
+    </div>
+    <hr>
+    @foreach (var comment in @Model.Comments)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="comments-list">
+                        <div class="media">
+                            <div class="media-body">
+
+                                <h4 class="media-heading user_name">@comment.Username</h4>
+                                <p class="pull-right"><small>@comment.AddedOn</small></p>
+
+                                <div><strong>@comment.Content</strong></div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
             </div>
         </div>
-        <hr>
-        @foreach (var comment in @Model.Comments)
-        {
-            <div class="container">
+        @*<div class="container">
                 <div class="row">
-                    @*<div class="col-sm-8">*@
+                    <div class="col-sm-8">
                         <div class="panel panel-white post panel-shadow">
                             <div class="post-heading">
                                 <div class="pull-left meta">
@@ -35,20 +58,21 @@
                                         <b>@comment.Username</b>
                                         post a comment.
                                     </div>
-                                    <h6 class="text-muted time">1 minute ago</h6>
+                                    <div>
+                                        <h6 class="text-muted time">@comment.AddedOn</h6>
+                                    </div>
                                 </div>
-                            </div> 
-                            <div class="post-description"> 
+                            </div>
+                            <div class="post-description">
                                 <p overflow-wrap: break-word><strong>@comment.Content</strong></p>
                             </div>
                         </div>
-                    @*</div>*@
+                    </div>
                 </div>
-            </div>
+            </div>*@
 
-   
-        }
-    </div>
+
+    }
 </div>
 @section Scripts{
     <script>
