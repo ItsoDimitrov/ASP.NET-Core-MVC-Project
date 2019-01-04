@@ -12,24 +12,19 @@
             <h2>Comments @Model.Comments.Count() <div class="pull-right"><a href="#" id="addacomment" class="btn btn-primary">Add a coment</a> </div></h2>
         </div>
         <div class="row" id="addcomment" style="display: none;">
-            <form>
-                <textarea class="form-control" placeholder="Comment content..."></textarea><br />
-                <button class="btn btn-primary">Send</button>
-            </form>
+                <form asp-action="AddComments" asp-controller="UserReviews" asp-route-movieId="@ViewBag.MovieId" method="post">
+                    @*<textarea class="form-control" placeholder="Comment content..."></textarea><br/>*@
+                    <label asp-for="@Model.Comment.Content" class="text-center"></label>
+                    <input asp-for="@Model.Comment.Content" class="form-control" placeholder="Comment content..."/>
+                    <span asp-validation-for="@Model.Comment.Content" class="text-danger"></span>
+                    <button class="btn btn-primary">Send</button>
+
+                </form>
+            </div>
         </div>
         <hr>
         @foreach (var comment in @Model.Comments)
         {
-            @*<div class="row comment">
-                <div class="head">
-                    <small><strong>@comment.Username</strong> 30.10.2017 12:13</small>
-                </div>
-                <div>
-                    <p>-- @comment.Content</p>
-
-                </div>
-                <hr>
-            </div>*@
             <div class="container">
                 <div class="row">
                     @*<div class="col-sm-8">*@

@@ -86,7 +86,7 @@ namespace FMCApp.Web.Controllers
                 return this.RedirectToAction("Register", "Users");
             }
             var movieObject = this._context.Movies.FirstOrDefault(m => m.Id == id);
-            if (movieObject == null)
+            if (movieObject == null)    
             {
                 return this.NotFound();
             }

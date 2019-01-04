@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FMCApp.Data;
+using FMCApp.Data.Models;
+using FMCApp.Web.Models.ViewModels.InputModels;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.Comments;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FMCApp.Web.Controllers
@@ -11,14 +14,15 @@ namespace FMCApp.Web.Controllers
     public class UserReviewsController : Controller
     {
         private readonly FMCAppContext _context;
-
-        public UserReviewsController(FMCAppContext context)
+        private readonly UserManager<FMCAppUser> _userManager;
+        public UserReviewsController(FMCAppContext context, UserManager<FMCAppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
 
-        public IActionResult UserReviews(int id)
+        public IActionResult Comments(int id)
         {
             var movie = this._context.Movies.FirstOrDefault(m => m.Id == id);
             if (movie == null)
@@ -38,14 +42,41 @@ namespace FMCApp.Web.Controllers
                 Comments = comments
             };
             ViewBag.MovieTitle = movie.Title;
+            ViewData["MovieId"] = movie.Id;
             return this.View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UserReviews(string item)
+        public IActionResult AddComments(AllCommentsViewModel model, int movieId)
         {
-            return this.View();
+            
+            if (!ModelState.IsValid)
+            {
+                return this.RedirectToAction("Comments","UserReviews", new
+                {
+                    id = movieId
+                });
+            }
+            if (!User.Identity.IsAuthenticated)
+            {
+                return this.RedirectToAction("Register","Users");
+            }
+
+            var currentLoggedInUserId = this._userManager.GetUserId(HttpContext.User);
+            var comment = new Comment
+            {
+                UserId = currentLoggedInUserId,
+                Content = model.Comment.Content,
+                MovieId = movieId
+
+            };
+            this._context.Comments.Add(comment);
+            this._context.SaveChanges();
+            return this.RedirectToAction("Comments", "UserReviews", new
+            {
+                Id = movieId
+            });
         }
 
     }
