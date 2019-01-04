@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "UserReviews";
+}
+@model FMCApp.Web.Models.ViewModels.VisualizationModels.Comments.AllCommentsViewModel
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<h2>User Reviews for <strong>@ViewBag.MovieTitle</strong></h2>
+<div style="overflow-y: auto; height:400px;">
+
+    <div class="container">
+        <div class="row">
+            <h2>Comments @Model.Comments.Count() <div class="pull-right"><a href="#" id="addacomment" class="btn btn-primary">Add a coment</a> </div></h2>
+        </div>
+        <div class="row" id="addcomment" style="display: none;">
+            <form>
+                <textarea class="form-control" placeholder="Comment content..."></textarea><br />
+                <button class="btn btn-primary">Send</button>
+            </form>
+        </div>
+        <hr>
+        @foreach (var comment in @Model.Comments)
+        {
+            @*<div class="row comment">
+                <div class="head">
+                    <small><strong>@comment.Username</strong> 30.10.2017 12:13</small>
+                </div>
+                <div>
+                    <p>-- @comment.Content</p>
+
+                </div>
+                <hr>
+            </div>*@
+            <div class="container">
+                <div class="row">
+                    @*<div class="col-sm-8">*@
+                        <div class="panel panel-white post panel-shadow">
+                            <div class="post-heading">
+                                <div class="pull-left meta">
+                                    <div class="title h5">
+                                        <b>@comment.Username</b>
+                                        post a comment.
+                                    </div>
+                                    <h6 class="text-muted time">1 minute ago</h6>
+                                </div>
+                            </div> 
+                            <div class="post-description"> 
+                                <p overflow-wrap: break-word><strong>@comment.Content</strong></p>
+                            </div>
+                        </div>
+                    @*</div>*@
+                </div>
+            </div>
+
+   
+        }
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(document).on('click', '#addacomment', function () {
+            $('#addcomment').toggle();
+        });
+    </script>
+}

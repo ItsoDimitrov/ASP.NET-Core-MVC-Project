@@ -53,9 +53,10 @@
                     {
                         <button type="button" class="btn btn-lg btn-info-outline-outline text-uppercase" disabled>@ViewBag.message</button>
                     }
-                    <a asp-controller="Movies" asp-action="AddToWatchlist" asp-route-id="@Model.Id" id="addToWatchlist" class="btn btn-lg btn-success text-uppercase">+ Add to Watchlist</a>
-                    @*<a asp-controller="#" asp-action="#" asp-route-id="#" id="removeFromWatchlist" style="display: none" class="btn btn-lg btn-success text-uppercase">Log in to </a>*@
-                    <a href="#" class="btn btn-lg btn-info text-uppercase">User Reviews</a>
+                    <form asp-controller="Movies" asp-action="AddToWatchlist" asp-route-id="@Model.Id" method="post">
+                        <button type="submit" id="addToWatchlist" class="btn btn-lg btn-success text-uppercase">+ Add to Watchlist</button>
+                    </form>
+                    <a asp-controller="Movies" asp-action="UserReviews" asp-route-id="@Model.Id" class="btn btn-lg btn-info text-uppercase">User Reviews</a>
                 </article> <!-- card-body.// -->
             </aside> <!-- col.// -->
         </div> <!-- row.// -->

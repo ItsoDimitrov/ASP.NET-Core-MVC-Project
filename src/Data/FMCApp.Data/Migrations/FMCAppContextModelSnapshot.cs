@@ -25,6 +25,8 @@ namespace FMCApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime?>("AddedOn");
+
                     b.Property<string>("Content");
 
                     b.Property<int>("MovieId");

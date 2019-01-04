@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using FMCApp.Data;
 using FMCApp.Data.Models;
+using FMCApp.Web.Models.ViewModels.VisualizationModels.Comments;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.Movies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -75,7 +76,30 @@ namespace FMCApp.Web.Controllers
             return View("Details",movie); // TODO : Implement view correctly ! ! ! !
         }
 
-        
+        public IActionResult UserReviews(int id)
+        {
+            var movie = this._context.Movies.FirstOrDefault(m => m.Id == id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            var comments = this._context.Comments.Where(m => m.MovieId == movie.Id).Select(c => new CommentViewModel
+            {
+                Id =  c.Id,
+                Username = c.FmcAppUser.UserName,
+                Content = c.Content,
+                
+            });
+            var viewModel = new AllCommentsViewModel
+            {
+                Comments = comments
+            };
+            ViewBag.MovieTitle = movie.Title;
+            return this.View(viewModel);
+        }
+        //[Authorize]
+        [HttpPost]
         public IActionResult AddToWatchlist(int id)
         {
             if (!User.Identity.IsAuthenticated)
