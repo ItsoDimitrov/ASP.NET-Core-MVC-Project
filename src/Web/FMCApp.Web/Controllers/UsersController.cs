@@ -30,6 +30,10 @@ namespace FMCApp.Web.Controllers
         [AllowAnonymous]
         public IActionResult Register()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -37,6 +41,11 @@ namespace FMCApp.Web.Controllers
         [AllowAnonymous]
         public IActionResult Login()
         {
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
             return this.View();
         }
 
@@ -67,7 +76,6 @@ namespace FMCApp.Web.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginInputModel model)
         {
             if (ModelState.IsValid)

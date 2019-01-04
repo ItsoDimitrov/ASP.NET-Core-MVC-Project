@@ -18,5 +18,8 @@ namespace FMCApp.Data.Models
         public Movie Movie { get; set; }
         public string Content { get; set; }
 
+        public DateTime? AddedOn { get; set; }
+
+        
     }
 }
