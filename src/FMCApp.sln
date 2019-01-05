@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModels", "ViewModels", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMCApp.ViewModels", "ViewModels\FMCApp.ViewModels\FMCApp.ViewModels.csproj", "{2D8F9387-59A2-45F6-9044-A2CE6810DFEE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BFC572B2-0F08-44EF-A923-3334853A417E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMCApp.Services", "Services\FMCApp.Services\FMCApp.Services.csproj", "{9F185061-EB35-4B35-82E1-09015754931C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,10 @@ Global
 		{2D8F9387-59A2-45F6-9044-A2CE6810DFEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D8F9387-59A2-45F6-9044-A2CE6810DFEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D8F9387-59A2-45F6-9044-A2CE6810DFEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F185061-EB35-4B35-82E1-09015754931C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F185061-EB35-4B35-82E1-09015754931C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F185061-EB35-4B35-82E1-09015754931C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F185061-EB35-4B35-82E1-09015754931C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +65,7 @@ Global
 		{0340B860-5870-4756-84FA-379B2B1759ED} = {ED096693-0660-4119-B1B1-44EA37DAA4BD}
 		{24BFF4CD-282C-44E1-A0F7-D66DFC37F86F} = {1EF1C15B-C727-4989-AA88-55D2779800AC}
 		{2D8F9387-59A2-45F6-9044-A2CE6810DFEE} = {9C361939-6094-4961-A72D-F525AB9192E1}
+		{9F185061-EB35-4B35-82E1-09015754931C} = {BFC572B2-0F08-44EF-A923-3334853A417E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5EB32961-22DF-4643-AFA2-878F98FE2F02}
