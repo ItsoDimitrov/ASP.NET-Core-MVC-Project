@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FMCApp.Data;
 using FMCApp.Data.Models;
+using FMCApp.Services.Interfaces;
 using FMCApp.Web.Models.ViewModels.InputModels;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.Watchlist;
 using Microsoft.AspNetCore.Authorization;
@@ -18,12 +19,14 @@ namespace FMCApp.Web.Controllers
         private readonly UserManager<FMCAppUser> _userManager;
         private readonly SignInManager<FMCAppUser> _signInManager;
         private readonly FMCAppContext _context;
+        private readonly IUserService _userService;
 
-        public UsersController(UserManager<FMCAppUser> userManager, SignInManager<FMCAppUser> signInManager, FMCAppContext context)
+        public UsersController(UserManager<FMCAppUser> userManager, SignInManager<FMCAppUser> signInManager, FMCAppContext context, IUserService userService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _userService = userService;
         }
 
         [HttpGet]
@@ -80,16 +83,17 @@ namespace FMCApp.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByNameAsync(model.Username);
-                if (user != null)
-                {
-                    SignInResult signInResult =
-                        await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+                //var user = await _userManager.FindByNameAsync(model.Username);
+                //if (user != null)
+                //{
+                //    SignInResult signInResult =
+                //        await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+                var signInResult = _userService.LogUser(model);
                     if (signInResult.Succeeded)
                     {
                         return this.RedirectToAction("Index", "Home");
                     }
-                }
+                //}
                 // TODO : Compare input password with password in database . If any error print message - "Incorrect password or username."
             }
             

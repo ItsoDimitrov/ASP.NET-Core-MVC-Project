@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using FMCApp.Data;
 using FMCApp.Data.Models;
+using FMCApp.Services;
+using FMCApp.Services.Interfaces;
 using FMCApp.Web.Hubs;
 using FMCApp.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
@@ -57,6 +59,7 @@ namespace FMCApp.Web
                 .AddEntityFrameworkStores<FMCAppContext>();
             services.AddSignalR();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<IUserService, UserService>();
 
             //services.AddAuthorization(options =>
             //{
