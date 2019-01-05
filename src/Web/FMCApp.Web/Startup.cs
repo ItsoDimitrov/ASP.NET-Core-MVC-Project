@@ -61,6 +61,7 @@ namespace FMCApp.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IHomeService, HomeService>();
+            services.AddScoped<IUserReviewsService, UserReviewsService>();
 
             //services.AddAuthorization(options =>
             //{
