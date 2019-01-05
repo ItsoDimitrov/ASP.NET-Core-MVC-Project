@@ -5,6 +5,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using FMCApp.Data;
+using FMCApp.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using FMCApp.Web.Models;
 using FMCApp.Web.Models.ViewModels.VisualizationModels;
@@ -17,45 +18,14 @@ namespace FMCApp.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly FMCAppContext _context;
-
-        public HomeController(FMCAppContext context)
+        private readonly IHomeService _homeService;
+        public HomeController(FMCAppContext context, IHomeService homeService)
         {
-            _context = context;
+            _homeService = homeService;
         }
         public IActionResult Index()
         {
-          
-
-            var news = this._context.Newses.Take(2)
-                .Select(n => new IndexNewsViewModel
-            {
-                Id = n.Id,
-                Title = n.Title,
-                Content = n.Content,
-            });
-            //var newsesModel = new IndexNewsesViewModel
-            //{
-            //    Newses = news,
-              
-                
-            //};
-            var movie = this._context.Movies.Take(6)
-                .Select(m => new IndexMovieViewModel
-                {
-                    Id = m.Id,
-                    Title = m.Title,
-                    MoviePosterUrl = m.MoviePosterUrl
-                });
-            //var moviesModel = new IndexMoviesViewModel  
-            //{
-            //    Movies = movie
-            //};
-            var model = new IndexNewsMoviesViewModel // shared class needed . Multiple models is given to the view
-            {
-                Newses = news,
-                Movies = movie
-            }; // TODO : Think about smart way ( dynamic or tuple )
+            var model = this._homeService.GetIndexModelInfo();
             return View(model);
         }
 

@@ -14,19 +14,20 @@ using Microsoft.AspNetCore.Identity;
 
 namespace FMCApp.Services
 {
-    public class UserService : IUserService
+    public class UserService : BaseService,IUserService
     {
-        private readonly UserManager<FMCAppUser> _userManager;
+        //private readonly UserManager<FMCAppUser> _userManager;
         private readonly SignInManager<FMCAppUser> _signInManager;
-        private readonly FMCAppContext _context;
+        //private readonly FMCAppContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
 
-        public UserService(UserManager<FMCAppUser> userManager, SignInManager<FMCAppUser> signInManager, FMCAppContext context, IHttpContextAccessor httpContextAccessor)
+        public UserService(UserManager<FMCAppUser> userManager, SignInManager<FMCAppUser> signInManager, FMCAppContext context
+            , IHttpContextAccessor httpContextAccessor) : base(context,userManager)
         {
-            _userManager = userManager;
+            //_userManager = userManager;
             _signInManager = signInManager;
-            _context = context;
+            //_context = context;
             _httpContextAccessor = httpContextAccessor;
         }
         public SignInResult LogUser(LoginInputModel model)

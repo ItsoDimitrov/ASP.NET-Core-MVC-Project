@@ -15,16 +15,12 @@ namespace FMCApp.Web.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly UserManager<FMCAppUser> _userManager;
         private readonly SignInManager<FMCAppUser> _signInManager;
-        private readonly FMCAppContext _context;
         private readonly IUserService _userService;
 
-        public UsersController(UserManager<FMCAppUser> userManager, SignInManager<FMCAppUser> signInManager, FMCAppContext context, IUserService userService)
+        public UsersController(SignInManager<FMCAppUser> signInManager, IUserService userService)
         {
-            _userManager = userManager;
             _signInManager = signInManager;
-            _context = context;
             _userService = userService;
         }
 
