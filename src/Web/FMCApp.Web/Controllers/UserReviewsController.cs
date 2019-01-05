@@ -35,6 +35,7 @@ namespace FMCApp.Web.Controllers
                 Id = c.Id,
                 Username = c.FmcAppUser.UserName,
                 Content = c.Content,
+                AddedOn = c.AddedOn
 
             });
             var viewModel = new AllCommentsViewModel
@@ -69,7 +70,7 @@ namespace FMCApp.Web.Controllers
                 UserId = currentLoggedInUserId,
                 Content = model.Comment.Content,
                 MovieId = movieId,
-                AddedOn = DateTime.Now
+                AddedOn = DateTime.UtcNow
                     
 
             };
