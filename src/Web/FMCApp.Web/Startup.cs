@@ -57,6 +57,7 @@ namespace FMCApp.Web
                 .AddEntityFrameworkStores<FMCAppContext>();
             services.AddSignalR();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             //services.AddAuthorization(options =>
             //{
             //    options.AddPolicy("Administration", policy => policy.RequireRole("Administrator"));

@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\ViewModels\**" />
+    <Content Remove="Models\ViewModels\**" />
+    <EmbeddedResource Remove="Models\ViewModels\**" />
+    <None Remove="Models\ViewModels\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Humanizer" Version="2.5.16" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
@@ -17,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\FMCApp.Data.Models\FMCApp.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\FMCApp.Data\FMCApp.Data.csproj" />
+    <ProjectReference Include="..\..\ViewModels\FMCApp.ViewModels\FMCApp.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
