@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using FMCApp.Data;
 using FMCApp.Data.Models;
+using FMCApp.Services.Interfaces;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.Comments;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.Movies;
 using Microsoft.AspNetCore.Authorization;
@@ -18,10 +19,12 @@ namespace FMCApp.Web.Controllers
     {
         private readonly FMCAppContext _context;
         private readonly UserManager<FMCAppUser> _userManager;
-        public MoviesController(FMCAppContext context, UserManager<FMCAppUser> userManager)
+        private readonly IMovieService _movieService;
+        public MoviesController(FMCAppContext context, UserManager<FMCAppUser> userManager, IMovieService movieService)
         {
             _context = context;
             _userManager = userManager;
+            _movieService = movieService;
         }
 
         public async Task<IActionResult> AllMovies(int? pageNumber, string searchString)
@@ -55,25 +58,26 @@ namespace FMCApp.Web.Controllers
 
         public IActionResult Details(int? id)
         {
-            var movieCheck = this._context.Movies.Find(id);
-            if (movieCheck == null)
-            {
-                return NotFound();
-            }
+            //var movieCheck = this._context.Movies.Find(id);
+            //if (movieCheck == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var movie = this._context.Movies.Select(m => new MovieDetailsViewModel
-            {
-                Id = m.Id,
-                Title = m.Title,
-                Director = m.Director.Name,
-                Description = m.Description,
-                Genre = m.Genre.ToString(),
-                ReleaseDate = m.ReleaseDate,
-                MoviePosterUrl = m.MoviePosterUrl,
+            //var movie = this._context.Movies.Select(m => new MovieDetailsViewModel
+            //{
+            //    Id = m.Id,
+            //    Title = m.Title,
+            //    Director = m.Director.Name,
+            //    Description = m.Description,
+            //    Genre = m.Genre.ToString(),
+            //    ReleaseDate = m.ReleaseDate,
+            //    MoviePosterUrl = m.MoviePosterUrl,
 
 
-            }).FirstOrDefault(m => m.Id == id);
-            return View("Details",movie); // TODO : Implement view correctly ! ! ! !
+            //}).FirstOrDefault(m => m.Id == id);
+            var movieModel = this._movieService.GetAllMoviesModel(id);
+            return View("Details",movieModel); // TODO : Implement view correctly ! ! ! !
         }
 
        
