@@ -58,20 +58,20 @@ namespace FMCApp.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new FMCAppUser
-                {
-                    UserName = model.Username,
-                    Email = model.Email,
-
-                };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                //if (_signInManager.UserManager.Users.Any())
+                //var user = new FMCAppUser
                 //{
-                //    await _signInManager.UserManager.AddToRoleAsync(user, "Administrator");
-                //}
-                if (result.Succeeded)
+                //    UserName = model.Username,
+                //    Email = model.Email,
+
+                //};
+                //var result = await _userManager.CreateAsync(user, model.Password);
+                ////if (_signInManager.UserManager.Users.Any())
+                ////{
+                ////    await _signInManager.UserManager.AddToRoleAsync(user, "Administrator");
+                ////}
+                var registerResult = _userService.RegisterUser(model);
+                if (registerResult.Result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, false);
                     return this.RedirectToAction("Login", "Users");
                 }
             }
@@ -88,7 +88,7 @@ namespace FMCApp.Web.Controllers
                 //{
                 //    SignInResult signInResult =
                 //        await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
-                var signInResult = _userService.LogUser(model);
+                var signInResult =  _userService.LogUser(model);
                     if (signInResult.Succeeded)
                     {
                         return this.RedirectToAction("Index", "Home");

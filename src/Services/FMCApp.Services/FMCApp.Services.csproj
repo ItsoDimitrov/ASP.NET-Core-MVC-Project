@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\FMCApp.Data.Models\FMCApp.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\FMCApp.Data\FMCApp.Data.csproj" />
     <ProjectReference Include="..\..\ViewModels\FMCApp.ViewModels\FMCApp.ViewModels.csproj" />
   </ItemGroup>
 
