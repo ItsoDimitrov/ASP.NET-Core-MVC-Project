@@ -14,5 +14,6 @@ namespace FMCApp.Services.Interfaces
         SignInResult LogUser(LoginInputModel model);
         Task<IdentityResult> RegisterUser(RegisterInputModel model);
         IQueryable<UserWatchlistViewModel> Watchlist();
+        void RemoveFromWatchlist(int id);
     }
 }

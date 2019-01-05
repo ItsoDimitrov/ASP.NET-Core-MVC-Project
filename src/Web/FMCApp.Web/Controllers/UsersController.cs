@@ -124,15 +124,16 @@ namespace FMCApp.Web.Controllers
         [HttpPost]
         public IActionResult RemoveFromWatchlist(int id)
         {
-            var currentUser = _userManager.GetUserId(HttpContext.User);
-            var movieToDelete = this._context.WatchLists.FirstOrDefault(m => m.Id == id && m.UserId == currentUser);
-            if (movieToDelete == null)
-            {
-                return this.NotFound();
-            }
+            //var currentUser = _userManager.GetUserId(HttpContext.User);
+            //var movieToDelete = this._context.WatchLists.FirstOrDefault(m => m.Id == id && m.UserId == currentUser);
+            //if (movieToDelete == null)
+            //{
+            //    return this.NotFound();
+            //}
 
-            this._context.Remove(movieToDelete);
-            this._context.SaveChanges();
+            //this._context.Remove(movieToDelete);
+            //this._context.SaveChanges();
+            _userService.RemoveFromWatchlist(id);
             return this.RedirectToAction("Watchlist","Users");
         }
 

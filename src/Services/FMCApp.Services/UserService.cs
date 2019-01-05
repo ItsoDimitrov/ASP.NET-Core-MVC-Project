@@ -79,5 +79,18 @@ namespace FMCApp.Services
             });
             return userMovies;
         }
+
+        public void RemoveFromWatchlist(int id)
+        {
+            var currentUser = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var movieToDelete = this._context.WatchLists.FirstOrDefault(m => m.Id == id && m.UserId == currentUser);
+            if (movieToDelete == null)
+            {
+                throw new InvalidOperationException("Invalid id");
+            }
+
+            this._context.Remove(movieToDelete);
+            this._context.SaveChanges();
+        }
     }
 }
