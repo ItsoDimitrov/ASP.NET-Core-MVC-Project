@@ -62,6 +62,7 @@ namespace FMCApp.Web
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IUserReviewsService, UserReviewsService>();
+            services.AddScoped<INewsService, NewsService>();
 
             //services.AddAuthorization(options =>
             //{
