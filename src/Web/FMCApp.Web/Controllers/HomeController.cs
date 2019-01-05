@@ -12,6 +12,7 @@ using FMCApp.Web.Models.ViewModels.VisualizationModels;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.IndexMovies;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.IndexNews;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Xml;
 
 namespace FMCApp.Web.Controllers

@@ -65,15 +65,24 @@
 
                 </ul>
             </nav>
+            @if (User.Identity.IsAuthenticated && this.User.IsInRole("Administrator"))
+            {
+                <li class="tm-nav-item">
+                    <a asp-controller="Administrators" asp-action="AllUsers" asp-area="Administration" class="tm-nav-item-link tm-button">
+                        All Users
+                    </a>
+                </li>
+
+            }
             <div>
                 <form asp-controller="Movies" asp-action="AllMovies" method="get">
                     <p>
                         Title: <input type="text" name="SearchString">
-                        <input type="submit" value="Search"/>
+                        <input type="submit" value="Search" />
                     </p>
                 </form>
             </div>
-          
+
         </div>
         @RenderBody()
     </div>
