@@ -15,5 +15,13 @@ namespace FMCApp.Web.Models.ViewModels.InputModels.Validations
         protected const string COMMENT_CONTENT_MAX_LENGTH_ERRORMESSAGE = "Too Long Comment Size.";
         protected const string COMMENT_CONTENT_REQUIRED__ERRORMESSAGE = "Comment cannot be null or whitespace.";
 
+        protected const string MOVIE_TITLE_REQUIRED_ERRORMESSAGE = "Movie Title cannot be null or whitespace.";
+        protected const string MOVIE_GENRE_REQUIRED_ERRORMESSAGE = "Movie Genre cannot be null or whitespace.";
+        protected const string MOVIE_DESCRIPTION_REQUIRED_ERRORMESSAGE = "Movie Description cannot be null or whitespace.";
+        protected const string MOVIE_DIRECTOR_REQUIRED_ERRORMESSAGE = "Movie Director cannot be null or whitespace.";
+        protected const string MOVIE_RELEASE_DATE_REQUIRED_ERRORMESSAGE = "Movie Release date cannot be null or whitespace.";
+        protected const string MOVIE_POSTER_URL_REQUIRED_ERRORMESSAGE = "Movie Poster URL cannot be null or whitespace.";
+
+
     }
 }

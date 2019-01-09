@@ -4,7 +4,6 @@
 }
 
 @model FMCApp.Web.Models.ViewModels.VisualizationModels.Movies.MovieDetailsViewModel
-<!------ Include the above in your HEAD tag ---------->
     <div class="card">
         <div class="row">
             <aside class="col-sm-5 border-right">
@@ -19,12 +18,7 @@
             <aside class="col-sm-7">
                 <article class="card-body p-5">
                     <h3 class="title mb-3">@Model.Title</h3>
-                    @*<p class="price-detail-wrap">
-            <span class="price h3 text-warning">
-                <span class="currency">US $</span><span class="num">1299</span>
-            </span>
-            <span>/per kg</span>
-        </p>*@
+          
                     <hr style="background-color: black">
                     <dl class="item-property">
                         <dt>Genre:</dt>
@@ -46,7 +40,7 @@
                     </dl>
                     <dl class="param param-feature">
                         <dt>Director:</dt>
-                        <dd> <a asp asp-controller="Directors" asp-action="Details">@Model.Director</a></dd>
+                        <dd> <a asp asp-controller="#" asp-action="#">@Model.Director</a></dd>
                     </dl>  <!-- item-property-hor .// -->
                     <hr />
                     @if (!string.IsNullOrEmpty(ViewBag.message))

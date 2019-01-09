@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewData["Title"] = "AddMovie";
+}
+@model FMCApp.ViewModels.ViewModels.InputModels.AddMovieInputModel
+<div class="row">
+    <div class="container">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td colspan="1">
+                        <form asp-controller="Administrators" asp-action="AddMovie" class="well form-horizontal" method="post">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label asp-for="Title" class="col-md-4 control-label">Title</label>
+                                    <div class="col-md-8">
+                                        <input asp-for="Title" class="form-control" placeholder="Movie Title"/>
+                                        <span asp-validation-for="Title" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Genre" class="col-md-4 control-label">Genre</label>
+                                    <div class="col-md-8">
+                                        <input asp-for="Genre" class="form-control" placeholder="Movie Genre"/>
+                                        <span asp-validation-for="Genre" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Description" class="col-md-4 control-label">Description</label>
+                                    <div class="col-md-8">
+                                        <input asp-for="Description" class="form-control" placeholder="Movie Description"/>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="DirectorId" class="col-md-4 control-label">Director</label>
+                                    <div class="col-md-8">
+                                        <input asp-for="DirectorId" class="form-control" placeholder="Movie Director ID"/>
+                                        <span asp-validation-for="DirectorId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ReleaseDate" class="col-md-4 control-label">Release Date</label>
+                                    <div class="col-md-8">
+                                        <input asp-for="ReleaseDate" class="form-control" placeholder="Movie Release Date"/>
+                                        <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PosterURL" class="col-md-4 control-label">Movie Poster</label>
+                                    <div class="col-md-8">
+                                        <input asp-for="PosterURL" class="form-control" placeholder="Movie Poster URL"/>
+                                        <span asp-validation-for="PosterURL" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success text-uppercase">Add Movie</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pre-scrollable">
+            <table class="table table-dark">
+                <thead>
+
+                <tr>
+                    <th scope="col">Possible Genres</th>
+                    <th scope="col">Id</th>
+                </tr>
+                </thead>
+           
+                <tbody>
+                @foreach (var genre in @ViewBag.Model.Genres)
+                {
+
+                    <tr>
+                        <td>@genre.Genre</td>
+                        <td>@genre.Id</td>
+                    </tr>
+                }
+                </tbody>
+            
+            </table>
+        </div>
+        <hr />
+        <div class="pre-scrollable">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Director Name</th>
+                        <th scope="col">Id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var director in @ViewBag.Model.Directors)
+                {
+                    <tr>
+                        <td>@director.DirectorName</td>
+                        <td>@director.DirectorId</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

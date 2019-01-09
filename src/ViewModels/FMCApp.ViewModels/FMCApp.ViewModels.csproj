@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\FMCApp.Data.Models\FMCApp.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>

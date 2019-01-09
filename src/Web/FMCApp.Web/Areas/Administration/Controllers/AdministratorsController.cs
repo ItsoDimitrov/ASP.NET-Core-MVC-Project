@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FMCApp.Data;
+using FMCApp.Data.Models;
+using FMCApp.Data.Models.Enums;
+using FMCApp.ViewModels.ViewModels.InputModels;
+using FMCApp.ViewModels.ViewModels.VisualizationModels.Administration;
+using FMCApp.ViewModels.ViewModels.VisualizationModels.Shared;
 using FMCApp.ViewModels.ViewModels.VisualizationModels.Users.Administration;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +22,43 @@ namespace FMCApp.Web.Areas.Administration.Controllers
         public AdministratorsController(FMCAppContext context)
         {
             _context = context;
+        }
+        [HttpGet]
+        public IActionResult AddMovie()
+        {
+            var directors = this._context.Directors.Select(d => new AddMovieDirectorViewModel
+            {
+                DirectorId = d.Id,
+                DirectorName = d.Name
+            });
+            var genres = Enum.GetValues(typeof(Genre)).Cast<Genre>().Select(g => new AddMovieGenreViewModel
+            {
+                Id = (int)g,
+                Genre = g.ToString()
+            });
+
+            var viewModel = new AdminAddMovieViewModel
+            {
+                Directors = directors,
+                Genres = genres
+            };
+            ViewBag.Model = viewModel;
+            return this.View();
+        }
+        [HttpPost]
+        public IActionResult AddMovie(AddMovieInputModel model)
+        {
+            
+            
+            if (this.ModelState.IsValid)
+            {
+                //var movie = new Movie
+                //{
+                //    Id = 
+                //}
+            }
+
+            return this.View();
         }
 
         [HttpGet]
