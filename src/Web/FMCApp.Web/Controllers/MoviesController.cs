@@ -30,7 +30,7 @@ namespace FMCApp.Web.Controllers
         public async Task<IActionResult> AllMovies(int? pageNumber, string searchString)
         {
 
-            var movie = this._context.Movies.Select(m => new MoviesViewModel
+            var movie = this._context.Movies.OrderByDescending(m => m.Id).Select(m => new MoviesViewModel
             {
                 Id = m.Id,
                 Title = m.Title,
