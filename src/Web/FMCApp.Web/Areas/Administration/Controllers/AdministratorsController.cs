@@ -24,7 +24,7 @@ namespace FMCApp.Web.Areas.Administration.Controllers
             _context = context;
         }
         [HttpGet]
-        public IActionResult AddMovie()
+        public IActionResult AddMovie(int? id)
         {
             var directors = this._context.Directors.Select(d => new AddMovieDirectorViewModel
             {
@@ -43,22 +43,33 @@ namespace FMCApp.Web.Areas.Administration.Controllers
                 Genres = genres
             };
             ViewBag.Model = viewModel;
+
+
             return this.View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult AddMovie(AddMovieInputModel model)
         {
             
-            
             if (this.ModelState.IsValid)
             {
-                //var movie = new Movie
-                //{
-                //    Id = 
-                //}
+                var movie = new Movie
+                {
+                    Title = model.Title,
+                    Description = model.Description,
+                    DirectorId = model.DirectorId,
+                    Genre = model.Genre,
+                    MoviePosterUrl = model.PosterURL,
+                    ReleaseDate = model.ReleaseDate,
+
+                };
+                this._context.Movies.Add(movie);
+                this._context.SaveChanges();
+                return this.RedirectToAction("AllMovies", "Movies");
             }
 
-            return this.View();
+            return this.RedirectToAction("AddMovie", "Administrators",1);
         }
 
         [HttpGet]

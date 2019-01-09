@@ -15,7 +15,7 @@ namespace FMCApp.ViewModels.ViewModels.InputModels
 
         [Required(AllowEmptyStrings = false,ErrorMessage = MOVIE_GENRE_REQUIRED_ERRORMESSAGE)]
         [Display(Name = "Genre")]
-        public int Genre { get; set; }
+        public Genre Genre { get; set; }
 
         [Required(AllowEmptyStrings = false,ErrorMessage = MOVIE_DESCRIPTION_REQUIRED_ERRORMESSAGE)]
         [Display(Name = "Description")]
