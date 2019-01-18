@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+
+@model FMCApp.ViewModels.ViewModels.VisualizationModels.Directors.DirectorViewModel
+<div class="card">
+    <div class="row">
+        <aside class="col-sm-7">
+            <article class="card-body p-5">
+                <h3 class="title mb-3">@Model.Name</h3>
+
+                <hr style="background-color: black">
+                <dl class="item-property">
+                    <dt>Info:</dt>  
+                    <dd>
+                        <p>@Model.Info</p>
+                    </dd>
+                </dl>
+                <dl class="item-property">
+                    <dt>Birthdate:</dt>
+                    <dd>
+                        <p>
+                            @Model.BirthDate.Value.ToShortDateString() @Model.BirthDate.Value.Year
+                        </p>
+                    </dd>
+                </dl>
+                <hr />
+            </article> 
+        </aside> 
+    </div> 
+</div> 

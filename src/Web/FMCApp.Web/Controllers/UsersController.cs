@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using FMCApp.Data;
 using FMCApp.Data.Models;
 using FMCApp.Services.Interfaces;
+using FMCApp.ViewModels.ViewModels.VisualizationModels.Users;
 using FMCApp.Web.Models.ViewModels.InputModels;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.Watchlist;
+using Humanizer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Internal;
+using X.PagedList;
 
 namespace FMCApp.Web.Controllers
 {
@@ -17,12 +22,38 @@ namespace FMCApp.Web.Controllers
     {
         private readonly SignInManager<FMCAppUser> _signInManager;
         private readonly IUserService _userService;
+        private readonly FMCAppContext _context;
 
-        public UsersController(SignInManager<FMCAppUser> signInManager, IUserService userService)
+        public UsersController(SignInManager<FMCAppUser> signInManager, IUserService userService, FMCAppContext context)
         {
             _signInManager = signInManager;
             _userService = userService;
+            _context = context;
         }
+
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Comments()
+        {
+            var currentLoggedInUserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userComments = this._context.Comments.Where(u => u.UserId == currentLoggedInUserId).Select(c =>
+                new UserCommentViewModel
+                {
+                    MovieId = c.Movie.Id,
+                    MovieTitle = c.Movie.Title,
+                    MovieGenre = c.Movie.Genre.ToString(),
+                    MovieUserComments = c.Movie.Comments.Count(u => u.UserId == currentLoggedInUserId)
+                });
+
+            
+            var viewModel = new UserCommentsViewModel
+            {
+                UserComments = userComments
+            };
+            return this.View(viewModel);
+        }
+
 
         [HttpGet]
         [AllowAnonymous]

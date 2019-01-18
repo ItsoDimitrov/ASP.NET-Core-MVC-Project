@@ -40,7 +40,7 @@
                     </dl>
                     <dl class="param param-feature">
                         <dt>Director:</dt>
-                        <dd> <a asp asp-controller="#" asp-action="#">@Model.Director</a></dd>
+                        <dd> <a asp asp-controller="Directors" asp-action="Details" asp-route-directorName="@Model.Director" >@Model.Director</a></dd>
                     </dl>  <!-- item-property-hor .// -->
                     <hr />
                     @if (!string.IsNullOrEmpty(ViewBag.message))

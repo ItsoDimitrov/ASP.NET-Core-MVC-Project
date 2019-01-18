@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Comments";
+    int rowCounter = 0;
+    string duplicateCheck = default(string);
+
+}
+@model FMCApp.ViewModels.ViewModels.VisualizationModels.Users.UserCommentsViewModel
+<h2 class="text-center">List Of Your Commented Movies</h2>
+<hr />
+<div class="row">
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Your Comments</th>
+                <th scope="col">Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        @{
+            List<string> duplicateChecker = new List<string>();
+            foreach (var comment in @Model.UserComments)
+            {
+
+                if (!(duplicateChecker.Contains(comment.MovieTitle)))
+                {
+                    <tr>
+                        <th scope="row">@(++rowCounter)</th>
+                        <td>@comment.MovieTitle</td>
+                        <td>@comment.MovieGenre</td>
+                        <td>@comment.MovieUserComments</td>
+                        <td>
+                            <form asp-controller="UserReviews" asp-action="Comments" asp-route-id="@comment.MovieId" method="post">
+                                <button type="submit" class="btn btn-secondary text-uppercase">View</button>
+                            </form>
+                        </td>
+                    </tr>
+                    duplicateChecker.Add(comment.MovieTitle);
+
+                }
+             }
+        }
+        </tbody>
+    </table>
+</div>
