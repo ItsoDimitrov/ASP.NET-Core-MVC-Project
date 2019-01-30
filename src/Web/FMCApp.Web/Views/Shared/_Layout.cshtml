@@ -60,14 +60,15 @@
                     <li class="tm-nav-item">
                         <a class="tm-nav-item-link tm-button" asp-controller="Movies" asp-action="AllMovies">Movies</a>
                     </li>
+                  
                     <li class="tm-nav-item">
                         <a asp-controller="Home" asp-action="Index" class="tm-nav-item-link tm-button">
                             Welcome
                         </a>
                     </li>
-
                 </ul>
             </nav>
+         
             @if (User.Identity.IsAuthenticated && this.User.IsInRole("Administrator"))
             {
                 <li class="tm-nav-item">
@@ -82,16 +83,30 @@
                 </li>
 
             }
+          
+                    @*<form asp-controller="Movies" asp-action="AllMovies" method="get">
+
+                    <div class="search">
+                        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search For Movie In Site"/>
+                        <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                    </div>
+                    </form>*@
+
             <div>
                 <form asp-controller="Movies" asp-action="AllMovies" method="get">
-                    <p>
-                        Title: <input type="text" name="SearchString">
-                        <input type="submit" value="Search" />
+                    <p  class="tm-nav-item-link tm-button">
+                        Title: <input type="text" class="bg-dark" name="SearchString">
+                        <input type="submit" value="Search" class="tm-purple-bg" />
                     </p>
                 </form>
             </div>
-
         </div>
+         @*<li class="tm-nav-item">
+                        <a asp-controller="Home" asp-action="Index" class="tm-nav-item-link tm-button">
+                            Welcome
+                        </a>
+                    </li>*@
+      
         @RenderBody()
     </div>
 </div>

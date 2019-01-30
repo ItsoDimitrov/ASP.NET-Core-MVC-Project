@@ -7,6 +7,7 @@ using FMCApp.Data.Models;
 using FMCApp.Services.Interfaces;
 using FMCApp.Web.Models.ViewModels.InputModels;
 using FMCApp.Web.Models.ViewModels.VisualizationModels.Comments;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -73,5 +74,13 @@ namespace FMCApp.Web.Controllers
             });
         }
 
+        [HttpPost]
+        [Authorize]
+        public IActionResult DeleteComment(int id)
+        {
+            return this.RedirectToAction("Comments", "UserReviews");
+        }
+ 
+       
     }
 }

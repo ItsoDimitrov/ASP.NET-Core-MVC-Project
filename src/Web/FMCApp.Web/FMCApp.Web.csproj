@@ -37,6 +37,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="AngleSharp">
+      <HintPath>..\..\..\..\..\..\.nuget\packages\anglesharp\0.9.11\lib\netstandard1.0\AngleSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="Areas\Administration\Views\_ViewImports.cshtml">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

@@ -1,8 +1,13 @@
 ﻿
 @{
     ViewData["Title"] = "UserReviews";
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
 }
+@using System.Security.Claims
 @using Humanizer
+@using Microsoft.AspNetCore.Identity
+
 @model FMCApp.Web.Models.ViewModels.VisualizationModels.Comments.AllCommentsViewModel
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <h2>User Reviews for <strong>@ViewBag.MovieTitle</strong></h2>
@@ -34,8 +39,18 @@
                             <div class="media-body">
 
                                 <h4 class="media-heading user_name">@comment.Username</h4>
-                                <p class="pull-right"><small>@comment.AddedOn.Humanize().</small></p>
+                                @if (User.Identity.IsAuthenticated || User.IsInRole("Administrator"))
+                                {
+                                    
+                                    <form asp-controller="UserReviews" asp-action="DeleteComment" asp-route-id="@comment.Id" method="post">
+                                        <button type="submit" class="close" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </form>
+                                }
 
+
+                                <p class="pull-right"><small>@comment.AddedOn.Humanize().</small></p>
                                 <div><strong>@comment.Content</strong></div>
 
                             </div>
@@ -48,30 +63,6 @@
                 </div>
             </div>
         </div>
-        @*<div class="container">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <div class="panel panel-white post panel-shadow">
-                            <div class="post-heading">
-                                <div class="pull-left meta">
-                                    <div class="title h5">
-                                        <b>@comment.Username</b>
-                                        post a comment.
-                                    </div>
-                                    <div>
-                                        <h6 class="text-muted time">@comment.AddedOn</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="post-description">
-                                <p overflow-wrap: break-word><strong>@comment.Content</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-
-
     }
 </div>
 @section Scripts{
