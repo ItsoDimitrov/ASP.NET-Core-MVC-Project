@@ -5,16 +5,10 @@
     <link href="~/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/magnific-popup.css" rel="stylesheet" />
     <link href="~/css/templatemo-style.css" rel="stylesheet" />
-    @*<link href="~/css/font-awesome.min.css" rel="stylesheet" />*@
     <link href="~/css/site.css" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
-
-    @*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
-    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+  
 </head>
 <body style="background-color:#d4d4d4">
 <div class="container-fluid">
@@ -84,14 +78,6 @@
 
             }
           
-                    @*<form asp-controller="Movies" asp-action="AllMovies" method="get">
-
-                    <div class="search">
-                        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search For Movie In Site"/>
-                        <button type="submit" class="btn btn-primary btn-sm">Search</button>
-                    </div>
-                    </form>*@
-
             <div>
                 <form asp-controller="Movies" asp-action="AllMovies" method="get">
                     <p  class="tm-nav-item-link tm-button">
@@ -101,12 +87,7 @@
                 </form>
             </div>
         </div>
-         @*<li class="tm-nav-item">
-                        <a asp-controller="Home" asp-action="Index" class="tm-nav-item-link tm-button">
-                            Welcome
-                        </a>
-                    </li>*@
-      
+        
         @RenderBody()
     </div>
 </div>
@@ -120,10 +101,6 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/@@aspnet/signalr/dist/browser/signalr.min.js"></script>
 <script src="~/js/site.js" asp asp-append-version="true"></script>
-@*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
 @RenderSection("Scripts", required: false)
 </body>
 </html>
